@@ -1,6 +1,7 @@
 /** Official editions supply these through @studioodle-site-content. */
 export type WebsiteLinks = {
   windows: string;
+  android: string;
   googlePlay: string;
   microsoftStore: string;
   donate: string;

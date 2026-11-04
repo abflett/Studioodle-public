@@ -1,0 +1,4 @@
+.web-install { position: fixed; z-index: 100; right: max(12px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); max-width: min(330px, calc(100vw - 24px)); padding: 8px 12px; border: 1px solid #8b887f; border-radius: 12px; background: #fff9ed; color: #263238; font: 13px/1.4 sans-serif; box-shadow: 0 2px 10px #0002; }
+.web-install summary { cursor: pointer; }
+.web-install button { padding: 8px 12px; cursor: pointer; margin: 4px; }
+.web-install p { margin: 10px 0; }

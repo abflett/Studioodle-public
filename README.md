@@ -65,3 +65,13 @@ committing installers into the source tree. Release artifacts carry their applic
 notices separately. The website footer links to those notices. Finished pictures
 may be used personally or commercially; reusable asset libraries and branding
 have separate restrictions. See releases/v0.9.0.md.
+
+## Browser offline support
+
+Production official website builds provide a manifest and worker scoped to `/app/`.
+`pwa/worker.js` caches the emitted app and artwork and waits for old app windows
+and tabs to close before activating updates. Home-screen Install & updates provides
+readiness, installation guidance and a manual update check. Development/native
+builds do not register a worker; the landing page is outside its scope.
+Direct Android APKs are signed with the official host's private release key;
+no key or secret belongs in this repository. See release notes for supported devices.
