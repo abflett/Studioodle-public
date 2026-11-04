@@ -29,6 +29,10 @@ hosts, tests and private asset providers. From that authorized parent checkout:
     npm run web
     npm run web:build
 
+Official output is grouped under the private parent's ignored dist/: app/ for
+the app-only frontend, web/ for the website, and releases/android/ or
+releases/windows/ for native packages. Builds clear only their own app/web output.
+
 Run one dev server command at a time, or choose separate ports. The public repo's
 npm run dev, web, build, web:build, typecheck and check commands delegate to that
 same parent. STUDIOODLE_PRIVATE_ROOT can identify its absolute location; it must
