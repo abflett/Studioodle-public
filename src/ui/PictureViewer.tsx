@@ -24,9 +24,10 @@ type Props = {
   onPrint: (picture: SavedPicture) => void; onAddPage: (picture: SavedPicture) => void;
 };
 /** Only the selected picture owns source loading and preview resources. */
-function ViewerImage({ summary, width, height, loadPicture, onLoaded }: {
+function ViewerImage({ summary, width, height, loadPicture, onLoaded, disabled, onEdit }: {
   summary: PictureSummary; width: number; height: number;
   loadPicture: Props['loadPicture']; onLoaded: (picture: SavedPicture) => void;
+  disabled: boolean; onEdit: () => void;
 }) {
   const latest = useLatest({ loadPicture, onLoaded });
   const [cached] = useState(() => pictureThumbnails.peek(summary, galleryThumbnailTier()));
@@ -54,9 +55,9 @@ function ViewerImage({ summary, width, height, loadPicture, onLoaded }: {
     return () => { controller.abort(); if (url) URL.revokeObjectURL(url); };
   }, [latest, summary.id, summary.updatedAt, attempt]);
   return <>
-    <div className="picture-viewer-paper" style={{ width, height, background: summary.background }}>
+    <button type="button" className="picture-viewer-paper" style={{ width, height, background: summary.background }} disabled={disabled} aria-label={`Edit picture: ${summary.title}`} title="Edit this picture" onClick={onEdit}>
       {(sharp || cached) && <img ref={preview} className="picture-viewer-image" src={sharp ?? cached?.url} data-picture-id={summary.id} data-quality={sharp ? 'sharp' : 'thumbnail'} alt={summary.title} draggable={false} onError={() => setError(true)} />}
-    </div>
+    </button>
     {!sharp && !error && <span className="viewer-loading" role="status"><LoaderCircle className="preview-spinner" aria-hidden="true" />Preparing preview</span>}
     {error && <div className="viewer-loading" role="status"><span>Could not load the full preview.</span><button className="icon-button" aria-label="Retry picture preview" onClick={() => { setError(false); setSharp(undefined); setAttempt(value => value + 1); }}><RotateCw aria-hidden="true" /></button></div>}
   </>;
@@ -92,7 +93,7 @@ export function PictureViewer(props: Props) {
       <div ref={browser} className="viewer-browser">
         <button className="icon-button viewer-previous" disabled={navigationDisabled} aria-label="Previous picture in viewer" title="Previous picture" onClick={() => onNavigate('previous')}><ArrowLeft aria-hidden="true" /></button>
         <div className="picture-viewer-stage" style={{ height }}>
-          <ViewerImage key={key} summary={summary} width={width} height={height} loadPicture={props.loadPicture} onLoaded={picture => { setLoaded({ key, picture }); props.onMetadata(pictureSummary(picture)); }} />
+          <ViewerImage key={key} summary={summary} width={width} height={height} disabled={disabled} onEdit={() => picture && props.onEdit(picture)} loadPicture={props.loadPicture} onLoaded={picture => { setLoaded({ key, picture }); props.onMetadata(pictureSummary(picture)); }} />
         </div>
         <button className="icon-button viewer-next" disabled={navigationDisabled} aria-label="Next picture in viewer" title="Next picture" onClick={() => onNavigate('next')}><ArrowRight aria-hidden="true" /></button>
         <span className="sr-only" role="status">Saved picture {index + 1} of {count}</span>

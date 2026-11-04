@@ -1083,7 +1083,8 @@ input[type='checkbox'], input[type='radio'], input[type='button'], input[type='s
   .viewer-previous { grid-column: 1; grid-row: 2; justify-self: end; }
   .viewer-next { grid-column: 2; grid-row: 2; justify-self: start; }
 }
-.picture-viewer-paper { position: relative; box-shadow: 0 3px 18px var(--shadow); }
+.picture-viewer-paper { position: relative; padding: 0; border: 0; border-radius: 0; box-shadow: 0 3px 18px var(--shadow); }
+.picture-viewer-paper:focus-visible { outline: 3px solid var(--text); outline-offset: 5px; }
 .picture-viewer-image { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
 .viewer-loading { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 20px; background: var(--panel); font-size: 13px; white-space: nowrap; }
 .viewer-loading svg { width: 18px; height: 18px; }

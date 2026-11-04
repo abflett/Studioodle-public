@@ -1,4 +1,40 @@
-.web-install { position: fixed; z-index: 100; right: max(12px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); max-width: min(330px, calc(100vw - 24px)); padding: 8px 12px; border: 1px solid #8b887f; border-radius: 12px; background: #fff9ed; color: #263238; font: 13px/1.4 sans-serif; box-shadow: 0 2px 10px #0002; }
-.web-install summary { cursor: pointer; }
-.web-install button { padding: 8px 12px; cursor: pointer; margin: 4px; }
-.web-install p { margin: 10px 0; }
+.web-install { position: relative; }
+.web-status-dot { position: absolute; top: 7px; right: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--text); outline: 2px solid var(--surface); }
+.setup-dialog.web-install-dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; inset: 0; margin: 0; border: 0; border-radius: 0; }
+.web-install-layout { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); gap: 24px; }
+.web-install-content { overflow-y: auto; overscroll-behavior: contain; width: min(100%, 980px); margin: auto; max-height: 100%; padding: 4px; }
+.web-install-content h3 { margin: 0 0 8px; font-size: clamp(19px, 3vw, 25px); }
+.web-install-content p { margin: 0; line-height: 1.55; color: var(--muted); }
+.web-offline-status { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; padding: 24px; background: var(--tool-well); border: 1px solid var(--border); border-radius: 24px; }
+.web-offline-status > svg { width: 32px; height: 32px; flex: 0 0 32px; }
+.web-offline-status > div { flex: 1 1 320px; }
+.web-install-guide { margin-top: 30px; }
+.web-guide-heading { display: flex; gap: 20px; align-items: center; justify-content: space-between; }
+.web-guide-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+.web-install-content .format-button { display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 10px 16px; text-decoration: none; color: var(--text); background: var(--tool-well); border: 1px solid var(--border); border-radius: 16px; }
+.web-guide-tabs .format-button { flex-direction: column; padding: 10px 12px; }
+.web-install-content .format-button svg { width: 20px; height: 20px; flex-shrink: 0; }
+.web-install-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.web-install-steps li { background: var(--tool-well); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; padding: 18px; }
+.web-step-picture { position: relative; height: 112px; display: grid; place-items: center; margin-bottom: 18px; }
+.web-step-number { position: absolute; top: 0; left: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--text); color: var(--surface); display: grid; place-items: center; font-weight: 800; }
+.web-step-browser { width: 118px; height: 92px; border: 2px solid var(--text); border-radius: 14px; display: grid; place-items: center; background: var(--page); transform: rotate(-4deg); box-shadow: 5px 5px 0 var(--border); }
+.web-step-browser > span { width: 65%; height: 6px; border-radius: 4px; background: var(--border); }
+.web-step-browser > svg { width: 38px; height: 38px; margin-bottom: 12px; }
+.web-install-steps li:nth-child(2) .web-step-browser { transform: rotate(3deg); }
+.web-install-steps h4 { margin: 0 0 8px; font-size: 17px; }
+.web-install-steps p { font-size: 14px; }
+.web-install-links { margin-top: 28px; padding-bottom: 12px; }
+.web-install-links nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+@media (max-width: 600px) {
+  .web-install-layout { padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom)); gap: 16px; }
+  .web-offline-status { padding: 18px; gap: 12px; }
+  .web-offline-status > div { flex-basis: 210px; }
+  .web-install-steps { grid-template-columns: 1fr; }
+  .web-install-steps li { display: grid; grid-template-columns: 94px 1fr; column-gap: 14px; align-items: center; padding: 14px; }
+  .web-step-picture { grid-row: span 2; height: 88px; margin: 0; }
+  .web-step-browser { width: 68px; height: 72px; }
+  .web-step-browser > svg { width: 28px; height: 28px; }
+  .web-step-number { width: 22px; height: 22px; font-size: 12px; z-index: 1; }
+  .web-guide-heading { align-items: flex-start; flex-direction: column; }
+}

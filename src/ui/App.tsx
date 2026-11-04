@@ -14,7 +14,6 @@ import { closeDesktop, isDesktop } from '../platform/desktop';
 import type { AppSettings } from './settings';
 import { applyTheme, readTheme, saveTheme } from './theme';
 import type { ThemePreference } from './theme';
-import { WebInstall } from '../platform/WebInstall';
 
 type StartupState =
   | { phase: 'loading'; completed: number; total: number }
@@ -120,5 +119,5 @@ export function App() {
       if(request===openRequest.current)setChoice({ ...setup, id: setup.id ?? crypto.randomUUID() });
     }).catch(() => { if(request===openRequest.current)setOpenError(true); }).finally(() => { if(request===openRequest.current){openPending.current=false;setOpening(false);} });
   }} theme={theme} onThemeChange={changeTheme} />
-  {openError && <button className="save-notice" onClick={() => setOpenError(false)}>Could not load this picture. Tap to dismiss.</button>}{saveNotice}{import.meta.env.PROD && import.meta.env.VITE_PWA_ENABLED === 'true' && <WebInstall />}</>;
+  {openError && <button className="save-notice" onClick={() => setOpenError(false)}>Could not load this picture. Tap to dismiss.</button>}{saveNotice}</>;
 }

@@ -7,7 +7,8 @@ import { BlankPageSetup } from './BlankPageSetup';
 import { saveCustomPage, customPagesRepository } from '../app/customColoringPages';
 import { coloringPages } from '../app/coloringPages';
 import { DeletePictureDialog } from './DeletePictureDialog';
-import { isDesktop, toggleDesktopFullscreen, watchDesktopFullscreen } from '../platform/desktop';
+import { isDesktop, isNative, toggleDesktopFullscreen, watchDesktopFullscreen } from '../platform/desktop';
+import { WebInstall } from '../platform/WebInstall';
 import type { AppSettings } from './settings';
 import { SelectionSettings } from './SelectionSettings';
 import { paperSize } from '../editor/document';
@@ -168,6 +169,7 @@ export function SelectionScreen({ opening = false, openingError = false, onOpen,
           void action.catch(() => setActionError('Fullscreen is unavailable in this window.'));
         }}>{fullscreen ? <Minimize aria-hidden="true" /> : <Fullscreen aria-hidden="true" />}</button>}
           {platformCapabilities.exit && <button className="icon-button" title="Exit Studioodle" aria-label="Exit Studioodle" onClick={onExit}><LogOut aria-hidden="true" /></button>}
+          {!isNative && (import.meta.env.DEV || import.meta.env.VITE_PWA_ENABLED === 'true') && <WebInstall />}
         </nav>
         <div className="choice-grid">
           {pictureChoices.map((item) => (
