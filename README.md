@@ -54,10 +54,12 @@ only the reviewed static output should be deployed to a static web server.
 
 ## Website and releases
 
-The intended website is https://studioodle.com. The 0.9.0 beta release includes Windows downloads and a reviewed website ZIP.
+Website: https://studioodle.com/ - [launch the browser app](https://studioodle.com/app/).
+The 0.9.0 beta release includes Windows downloads and a reviewed website ZIP.
 The Pages workflow deploys the ZIP from a published release after checksum
-verification. DNS for studioodle.com and store listings are separate. Browser launch/download links
-will be added as releases become available. Downloadable packages will use the
+verification. HTTPS is enforced; www and the default GitHub Pages address
+redirect to the main site. The deployment environment permits main and v*
+release tags. Store listings are not available yet. Downloadable packages will use the
 [Releases page](https://github.com/abflett/Studioodle-public/releases), rather than
 committing installers into the source tree. Release artifacts carry their applicable artwork/end-user terms and third-party
 notices separately. The website footer links to those notices. Finished pictures
