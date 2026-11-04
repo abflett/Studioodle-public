@@ -54,9 +54,12 @@ only the reviewed static output should be deployed to a static web server.
 
 ## Website and releases
 
-The intended website is https://studioodle.com. No hosting, DNS, installer or
-store listing is configured by this source move. Browser launch/download links
+The intended website is https://studioodle.com. The 0.9.0 beta release includes Windows downloads and a reviewed website ZIP.
+The Pages workflow deploys the ZIP from a published release after checksum
+verification. DNS for studioodle.com and store listings are separate. Browser launch/download links
 will be added as releases become available. Downloadable packages will use the
 [Releases page](https://github.com/abflett/Studioodle-public/releases), rather than
-committing installers into the source tree. Release artifacts will carry their
-applicable artwork/end-user terms and third-party notices separately.
+committing installers into the source tree. Release artifacts carry their applicable artwork/end-user terms and third-party
+notices separately. The website footer links to those notices. Finished pictures
+may be used personally or commercially; reusable asset libraries and branding
+have separate restrictions. See releases/v0.9.0.md.
