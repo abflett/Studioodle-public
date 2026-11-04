@@ -8,7 +8,7 @@ const library = JSON.parse(librarySource) as { id: StickerKind; title: string; c
 export type StickerDetail = 'simple' | 'moderate' | 'detailed';
 type StickerItem = { kind: StickerKind; title: string; detail: StickerDetail; icon: LucideIcon; preview?: string };
 // Subject categories stay stable; labels and membership come from the authoring
-// manifest through scripts/build-asset-catalog.mjs. Scene themes are independent.
+// manifest through dev/scripts/build-asset-catalog.mjs. Scene themes are independent.
 export const stickerCategories: { id: string; title: string; icon: LucideIcon; items: StickerItem[] }[] = [
   { id: 'shapes', title: 'Shapes', icon: Shapes },
   { id: 'characters', title: 'Characters', icon: UserRound },

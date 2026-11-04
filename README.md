@@ -21,7 +21,10 @@ underlying artwork. No private Git history was imported into this repository.
 
 The official project checks this repository out as its app/ Git submodule. The
 private host owns dependency installation, Vite configuration, website, native
-hosts, tests and private asset providers. From that authorized parent checkout:
+hosts, tests and private asset providers. Maintained private helpers live under
+dev/scripts/, regressions under dev/tests/, and the isolated artwork reviewer
+under dev/artwork-review/. Scratch output and downloaded tools are ignored under
+dev/work/ and dev/bin/. From that authorized parent checkout:
 
     git submodule update --init app
     npm ci
