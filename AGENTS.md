@@ -1,11 +1,15 @@
-# Public distribution boundary
+# Public application repository
 
-This repository is public. Keep commits focused on public release documentation,
-explicitly approved web distribution files and release metadata. Do not copy the
-private development repository's history, app sources, original artwork,
-generation metadata, credentials or private configuration here.
+This repository is public. App source and build entry helpers are authorized here
+under Apache 2.0. Keep original artwork, official runtime assets, logo artwork,
+branding implementations, generation metadata, private credentials and private
+repository history out of this repository.
 
-Do not publish web bundles, installers or asset packs merely because they exist
-in a local build directory. Prepare and review the intended release explicitly,
-including its applicable terms and third-party notices. Source-code publication
-is a separate future decision. Do not add a blanket open-source license.
+The authorized private host supplies @studioodle-assets, @studioodle-branding and
+@studioodle-backgrounds through its Vite and TypeScript configuration. Do not copy
+private content into this tree to fix imports. Read README.md for official builds.
+
+Use the private host's app checks and browser regressions after source changes.
+Public source commits must be pushed before the parent records their revision.
+Web publishing and installer releases require a reviewed release; do not commit
+local build output or publish a release merely because a build succeeded.

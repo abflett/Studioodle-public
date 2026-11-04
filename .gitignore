@@ -1,8 +1,12 @@
-# Local configuration and credentials
+node_modules/
+dist/
+dist-web/
+work/
 .env
 .env.*
 !.env.example
 *.local
 *.log
+*.tsbuildinfo
 .DS_Store
 Thumbs.db

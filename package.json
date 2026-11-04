@@ -1,0 +1,19 @@
+{
+  "name": "studioodle-app",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "Studioodle application source; official builds compose with private artwork and branding.",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "node scripts/official-host.mjs dev",
+    "web": "node scripts/official-host.mjs web",
+    "build": "node scripts/official-host.mjs build",
+    "web:build": "node scripts/official-host.mjs web:build",
+    "check": "node scripts/official-host.mjs check",
+    "typecheck": "node scripts/official-host.mjs typecheck"
+  }
+}

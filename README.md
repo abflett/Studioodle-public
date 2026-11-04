@@ -1,27 +1,51 @@
 # Studioodle
 
-A free drawing and coloring studio. Draw on blank paper, color a page and make
-pictures with stickers. No account is required; pictures stay on your device.
+A free drawing and coloring studio. This public repository contains the shared
+application source for browser, Windows and Android, plus official build entry
+helpers. It is also the home for future web publishing and downloadable releases.
 
-This is the official public distribution repository for Studioodle. It is being
-prepared for the browser edition and downloadable releases. No web build,
-installer or store listing is published here yet.
+## Source and assets
 
-## Website and downloads
+The application code is available under [Apache 2.0](LICENSE). Official artwork,
+sticker/page libraries, logo artwork and branding implementations are supplied
+separately by the private official project and are not included or licensed here.
+Third-party components retain their own licenses. Apache 2.0 grants no general
+permission to use Studioodle trademarks to identify an unofficial edition.
 
-The intended website is https://studioodle.com. Hosting and domain configuration
-are not enabled by this repository's initial setup. Verified download and store
-links will be added as releases become available.
+The src/ui/Brand.tsx adapter delegates to a host-supplied branding implementation.
+Asset consumers use @studioodle-assets; background styling uses
+@studioodle-backgrounds. Generated sticker identifier types are code, not the
+underlying artwork. No private Git history was imported into this repository.
 
-Future downloadable packages will be listed on the
-[Releases page](https://github.com/abflett/Studioodle-public/releases).
+## Official development and builds
 
-## What this repository contains
+The official project checks this repository out as its app/ Git submodule. The
+private host owns dependency installation, Vite configuration, website, native
+hosts, tests and private asset providers. From that authorized parent checkout:
 
-For now this repository contains public release documentation only. Future web
-hosting files and release packages will be published deliberately. App source,
-original artwork, branding sources and development history remain in the private
-official repository. A separate source-code publication may be considered later.
+    git submodule update --init app
+    npm ci
+    npm run dev
+    npm run web
+    npm run web:build
 
-Public visibility does not grant an open-source license. See [LICENSE](LICENSE).
-Third-party material in future releases will retain its own licenses and notices.
+Run one dev server command at a time, or choose separate ports. The public repo's
+npm run dev, web, build, web:build, typecheck and check commands delegate to that
+same parent. STUDIOODLE_PRIVATE_ROOT can identify its absolute location; it must
+contain this checkout at app/. No secret is embedded in those commands.
+
+A public-only clone contains source but cannot currently build the official
+edition: it lacks the artwork catalogs, page layouts, branding and host setup.
+A standalone sample asset provider is not included yet. A public hosting job
+cannot access the private repository without separately configured owner access.
+For now, build from the authorized private parent with this submodule initialized;
+only the reviewed static output should be deployed to a static web server.
+
+## Website and releases
+
+The intended website is https://studioodle.com. No hosting, DNS, installer or
+store listing is configured by this source move. Browser launch/download links
+will be added as releases become available. Downloadable packages will use the
+[Releases page](https://github.com/abflett/Studioodle-public/releases), rather than
+committing installers into the source tree. Release artifacts will carry their
+applicable artwork/end-user terms and third-party notices separately.
