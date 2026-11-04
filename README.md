@@ -69,9 +69,11 @@ have separate restrictions. See releases/v0.9.0.md.
 ## Browser offline support
 
 Production official website builds provide a manifest and worker scoped to `/app/`.
-`pwa/worker.js` caches the emitted app and artwork and waits for old app windows
-and tabs to close before activating updates. Home-screen Install & updates provides
-readiness, installation guidance and a manual update check. Development/native
+`pwa/worker.js` caches the emitted app and artwork and activates fully downloaded
+updates for the next refresh.
+Existing sessions keep their old assets until they close or navigate away; no
+page is automatically reloaded. SHA-256 integrity rejects stale/mixed downloads.
+The home-screen globe opens readiness, installation guidance and update checks. Development/native
 builds do not register a worker; the landing page is outside its scope.
 Direct Android APKs are signed with the official host's private release key;
 no key or secret belongs in this repository. See release notes for supported devices.
