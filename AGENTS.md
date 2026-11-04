@@ -1,12 +1,15 @@
 # Public application repository
 
-This repository is public. App source and build entry helpers are authorized here
+This repository is public. App source, landing-page code and build entry helpers
+are authorized here
 under Apache 2.0. Keep original artwork, official runtime assets, logo artwork,
 branding implementations, generation metadata, private credentials and private
 repository history out of this repository.
 
 The authorized private host supplies @studioodle-assets, @studioodle-branding and
-@studioodle-backgrounds through its Vite and TypeScript configuration. Do not copy
+@studioodle-backgrounds through its Vite and TypeScript configuration. Site code
+uses @studioodle-site-content and @studioodle-brand-art for private inputs.
+Do not copy
 private content into this tree to fix imports. Read README.md for official builds.
 
 Use the private host's app checks and browser regressions after source changes.

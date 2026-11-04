@@ -1,8 +1,8 @@
 # Studioodle
 
 A free drawing and coloring studio. This public repository contains the shared
-application source for browser, Windows and Android, plus official build entry
-helpers. It is also the home for future web publishing and downloadable releases.
+application source for browser, Windows and Android, landing-page code under
+site/, plus official build entry helpers. It is also the home for future web publishing and downloadable releases.
 
 ## Source and assets
 
@@ -12,7 +12,11 @@ separately by the private official project and are not included or licensed here
 Third-party components retain their own licenses. Apache 2.0 grants no general
 permission to use Studioodle trademarks to identify an unofficial edition.
 
-The src/ui/Brand.tsx adapter delegates to a host-supplied branding implementation.
+The src/ui/Brand.tsx adapter delegates to the private art/studioodle/Brand.tsx
+implementation. Private art/bundled/ supplies accepted runtime artwork, while
+art/source/ retains originals. The official host supplies site news and links
+through @studioodle-site-content and illustrations through @studioodle-brand-art.
+The public site/types.ts file defines the provider types, without editorial data.
 Asset consumers use @studioodle-assets; background styling uses
 @studioodle-backgrounds. Generated sticker identifier types are code, not the
 underlying artwork. No private Git history was imported into this repository.
@@ -20,8 +24,8 @@ underlying artwork. No private Git history was imported into this repository.
 ## Official development and builds
 
 The official project checks this repository out as its app/ Git submodule. The
-private host owns dependency installation, Vite configuration, website, native
-hosts, tests and private asset providers. Maintained private helpers live under
+private host owns dependency installation, Vite configuration, editorial content,
+native hosts, tests and private asset providers. Maintained private helpers live under
 dev/scripts/, regressions under dev/tests/, and the isolated artwork reviewer
 under dev/artwork-review/. Scratch output and downloaded tools are ignored under
 dev/work/ and dev/bin/. From that authorized parent checkout:

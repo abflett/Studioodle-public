@@ -8,7 +8,7 @@ const host = resolve(process.env.STUDIOODLE_PRIVATE_ROOT || resolve(checkout, '.
 const command = process.argv[2];
 const commands = new Set(['dev', 'web', 'build', 'web:build', 'check', 'typecheck']);
 if (!commands.has(command)) throw Error('Unknown official build command.');
-if (!existsSync(resolve(host, 'src/assets/coloringBook.json')) ||
+if (!existsSync(resolve(host, 'art/bundled/coloringBook.json')) ||
     !existsSync(resolve(host, 'vite/config.shared.ts')) ||
     !existsSync(resolve(host, 'app')) || realpathSync(resolve(host, 'app')) !== realpathSync(checkout)) {
   throw Error('Official builds require the authorized private Studioodle checkout with this repository as its app/ submodule. Set STUDIOODLE_PRIVATE_ROOT if needed. No private assets are included in this public repository.');
