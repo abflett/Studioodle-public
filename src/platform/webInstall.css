@@ -1,4 +1,15 @@
 .web-install { position: relative; }
+.web-download-icon { position: relative; display: block; width: 100%; height: 100%; }
+.web-download-icon svg { width: 100%; height: 100%; }
+.web-download-icon .web-download-reduced { display: none; }
+.web-download-spinner { animation: web-download-turn .9s linear infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes web-download-turn { to { transform: rotate(360deg); } }
+.web-download-percent { position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%); font-size: 9px; line-height: 1; font-weight: 800; background: var(--surface); color: var(--text); border-radius: 4px; padding: 1px 2px; }
+.web-offline-status > .web-download-icon { width: 32px; height: 32px; flex: 0 0 32px; }
+@media (prefers-reduced-motion: reduce) {
+  .web-download-icon .web-download-spinner { display: none; animation: none; }
+  .web-download-icon .web-download-reduced { display: block; }
+}
 .web-status-dot { position: absolute; top: 7px; right: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--text); outline: 2px solid var(--surface); }
 .setup-dialog.web-install-dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; inset: 0; margin: 0; border: 0; border-radius: 0; }
 .web-install-layout { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); gap: 24px; }

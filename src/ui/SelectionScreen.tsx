@@ -9,6 +9,7 @@ import { coloringPages } from '../app/coloringPages';
 import { DeletePictureDialog } from './DeletePictureDialog';
 import { isDesktop, isNative, toggleDesktopFullscreen, watchDesktopFullscreen } from '../platform/desktop';
 import { WebInstall } from '../platform/WebInstall';
+import { setWebHomeReady } from '../platform/webUpdates';
 import type { AppSettings } from './settings';
 import { SelectionSettings } from './SelectionSettings';
 import { paperSize } from '../editor/document';
@@ -61,6 +62,10 @@ export function SelectionScreen({ opening = false, openingError = false, onOpen,
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [viewing, setViewing] = useState(false);
   const [step, setStep] = useState<WizardStep | null>(null);
+  useEffect(() => {
+    setWebHomeReady(!opening && !settingsOpen && !viewing && !step);
+    return () => setWebHomeReady(false);
+  }, [opening, settingsOpen, viewing, step]);
   const [paperPreset, setPaperPreset] = useState<PaperPresetId>('display');
   const displaySize = useDisplayPage();
   const [manualOrientation, setOrientation] = useState<PaperOrientation>();
