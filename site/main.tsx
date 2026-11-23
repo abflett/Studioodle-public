@@ -26,7 +26,7 @@ export function Website() {
       </section>
       <section className="news-section" id="news" aria-labelledby="news-title"><div className="section-heading"><p className="eyebrow">From the studio</p><h2 id="news-title">The latest doodles.</h2></div>{news.map(post => <article key={post.date + post.title}><time dateTime={post.date}>{new Intl.DateTimeFormat('en', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(post.date))}</time><div><h3>{post.title}</h3>{post.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></article>)}</section>
       {websiteLinks.donate && <aside className="support"><h2>Keep the creativity going.</h2><p>If Studioodle brightens your day, you can help support its development and hosting.</p><a className="download" href={websiteLinks.donate}>Support Studioodle</a></aside>}
-    </main><footer><p>Studioodle. A little imagination goes a long way.</p><div><p>Studioodle {version}{version.startsWith('0.') ? ' Beta' : ''}. All rights reserved.</p><a href="./licenses/ARTWORK-TERMS.txt">Artwork terms</a><span aria-hidden="true"> &#183; </span><a href="./licenses/THIRD-PARTY-NOTICES.txt">Third-party notices</a></div></footer>
+    </main><footer><p>Studioodle. A little imagination goes a long way.</p><div><p>Studioodle {version}{version.startsWith('0.') ? ' Beta' : ''}. All rights reserved.</p><a href="./privacy/">Privacy policy</a><span aria-hidden="true"> &#183; </span><a href="./licenses/ARTWORK-TERMS.txt">Artwork terms</a><span aria-hidden="true"> &#183; </span><a href="./licenses/THIRD-PARTY-NOTICES.txt">Third-party notices</a></div></footer>
   </>;
 }
 
