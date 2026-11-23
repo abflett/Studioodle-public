@@ -55,7 +55,7 @@ only the reviewed static output should be deployed to a static web server.
 ## Website and releases
 
 Website: https://studioodle.com/ - [launch the browser app](https://studioodle.com/app/).
-The 0.9.0 beta release includes Windows downloads and a reviewed website ZIP.
+The 1.0.0 release includes Windows x64 downloads and a reviewed website ZIP.
 The Pages workflow deploys the ZIP from a published release after checksum
 verification. HTTPS is enforced; www and the default GitHub Pages address
 redirect to the main site. The deployment environment permits main and v*
@@ -64,7 +64,9 @@ release tags. Store listings are not available yet. Downloadable packages will u
 committing installers into the source tree. Release artifacts carry their applicable artwork/end-user terms and third-party
 notices separately. The website footer links to those notices. Finished pictures
 may be used personally or commercially; reusable asset libraries and branding
-have separate restrictions. See releases/v0.9.0.md.
+have separate restrictions. See releases/v1.0.0.md. The Windows installer is
+unsigned and includes the WebView2 offline installer. Microsoft Store submission
+is pending; this is not a claim of Store certification. Android remains on 0.10.1.
 
 ## Browser offline support
 
