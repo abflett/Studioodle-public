@@ -29,6 +29,11 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.event.release.tag_name }}
+          sparse-checkout: scripts/stage-pages-downloads.mjs
+          sparse-checkout-cone-mode: false
       - name: Download and verify the reviewed static website
         env:
           RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name }}
@@ -49,6 +54,10 @@ jobs:
           test -f site/app/index.html
           test -f site/licenses/ARTWORK-TERMS.txt
           test -f site/licenses/THIRD-PARTY-NOTICES.txt
+      - name: Stage checksum-pinned direct downloads
+        run: |
+          node scripts/stage-pages-downloads.mjs site
+          test "$(du -sb site | cut -f1)" -lt 1000000000
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
